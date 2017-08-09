@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  c9:
+    build: .
+    container_name: c9
+    network_mode: bridge
+    ports: 
+      - 8080:8080
+    restart: always
