@@ -40,4 +40,8 @@ RUN mkdir -p $HOME/opt/bin && \
   
   touch $HOME/.hushlogin
 
+COPY styles.css $HOME/.c9/styles.css
+COPY project.settings $HOME/.c9/project.settings
+COPY user.settings $HOME/.c9/user.settings
+
 CMD node /shintech/core/server.js -p 8080 -a ${USERNAME}:${PASSWORD} --listen 0.0.0.0 -w $HOME/Development
