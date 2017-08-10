@@ -40,4 +40,4 @@ RUN mkdir -p $HOME/opt/bin && \
   
   touch $HOME/.hushlogin
 
-CMD node /shintech/core/server.js -p 8080 -a : --listen 0.0.0.0 -w $HOME/Development
+CMD node /shintech/core/server.js -p 8080 -a ${USERNAME}:${PASSWORD} --listen 0.0.0.0 -w $HOME/Development

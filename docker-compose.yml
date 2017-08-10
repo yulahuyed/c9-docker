@@ -9,3 +9,6 @@ services:
     ports: 
       - 8080:8080
     restart: always
+    environment: 
+      - USERNAME='mprather'
+      - PASSWORD='test'
