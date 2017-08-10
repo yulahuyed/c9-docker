@@ -3,7 +3,6 @@ FROM ubuntu:16.04
 WORKDIR /shintech
 
 COPY bashrc.txt .
-COPY installer.txt .
 
 RUN useradd --user-group --create-home --shell /bin/bash mike && \
   chown -R mike:mike /shintech && \
