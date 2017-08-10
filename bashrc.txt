@@ -1,0 +1,63 @@
+###############################################################
+
+#Function to start ssh-agent
+
+GREP=/bin/grep
+test=`/bin/ps -ef | $GREP ssh-agent | $GREP -v grep | /usr/bin/awk '{print $2}' | xargs`
+
+if [ "$test" = "" ]; then
+   # there is no agent running
+   if [ -e "$HOME/agent.sh" ]; then
+      # remove the old file
+      /bin/rm -f $HOME/agent.sh
+   fi;
+   # start a new agent
+   /usr/bin/ssh-agent | $GREP -v echo >&$HOME/agent.sh
+fi;
+
+test -e $HOME/agent.sh && source $HOME/agent.sh
+
+alias kagent="kill -9 $SSH_AGENT_PID"
+
+################################################################
+
+name=$(whoami)
+host=$(hostname)
+echo "Hello ${name^}" | toilet -f pagga -F gay
+echo "
+Welcome to ${host^}."
+echo "
+Today is $(date "+%A, %B %d, %Y").
+
+"
+#################################################################
+
+# Function for get branch of git project
+function parse_git_branch () {
+git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+#################################################################
+
+force_color_prompt=yes
+
+black="\[\033[00;30m\]"
+grey="\[\033[01;30m\]"
+light_blue="\[\033[01;34m\]"
+blue="\[\033[00;34m\]"
+dark_purple="\[\033[00;35m\]"
+light_purple="\[\033[01;35m\]"
+light_cyan="\[\033[01;36m\]"
+cyan="\[\033[00;36m\]"
+light_green="\[\033[01;32m\]"
+green="\[\033[00;32m\]"
+light_red="\[\033[01;31m\]"
+red="\[\033[00;31m\]"
+brown="\[\033[00;33m\]"
+yellow="\[\033[01;33m\]"
+white="\[\033[00;37m\]"
+
+#################################################################
+
+PATH=$PATH:~/opt/bin
+PATH=~/opt/bin:$PATH >> .bashrc
