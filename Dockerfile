@@ -22,9 +22,9 @@ RUN useradd --user-group --create-home --shell /bin/bash mike && \
   tar -xvf node-v6.10.2-linux-x64.tar.xz   && \
   cp -R node-v6.10.2-linux-x64/* /usr/local/
   
-COPY .bash_aliases $HOME
-  
 USER mike
+
+COPY .bash_aliases $HOME
 
 RUN mkdir -p $HOME/opt/bin && \
   mkdir -p $HOME/Development && \
