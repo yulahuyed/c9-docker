@@ -28,7 +28,7 @@ COPY aliases.txt $HOME/.bash_aliases
 
 RUN mkdir -p $HOME/opt/bin && \
   mkdir -p $HOME/Development && \
-  ssh-keygen -b 2048 -t rsa -f $HOME/.ssh/id_rsa -q -N "" -C ${EMAIL} && \
+  ssh-keygen -b 2048 -t rsa -f $HOME/.ssh/id_rsa -q -N "" && \
 
   git clone https://github.com/c9/core.git && \
   npm --prefix /shintech/core install /shintech/core && \
