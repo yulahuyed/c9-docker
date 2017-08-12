@@ -20,7 +20,9 @@ RUN useradd --user-group --create-home --shell /bin/bash mike && \
   
   wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-x64.tar.xz && \
   tar -xvf node-v6.10.2-linux-x64.tar.xz   && \
-  cp -R node-v6.10.2-linux-x64/* /usr/local/
+  cp -R node-v6.10.2-linux-x64/* /usr/local/ && \
+  wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 && \
+  chmod +x /usr/local/bin/dumb-init    
   
 USER mike
 
@@ -41,8 +43,8 @@ RUN mkdir -p $HOME/opt/bin && \
   
   touch $HOME/.hushlogin
 
-COPY styles.css $HOME/.c9/styles.css
-COPY project.settings $HOME/.c9/project.settings
-COPY user.settings $HOME/.c9/user.settings
+COPY styles.css $HOME/c9/styles.css
+COPY project.settings $HOME/c9/project.settings
+COPY user.settings $HOME/c9/user.settings
 
-CMD node /shintech/core/server.js -p 8080 -a ${USERNAME}:${PASSWORD} --listen 0.0.0.0 -w $HOME/Development
+CMD dumb-init node /shintech/core/server.js -p 8080 -a ${USERNAME}:${PASSWORD} --listen 0.0.0.0 -w $HOME/Development

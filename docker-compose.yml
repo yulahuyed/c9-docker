@@ -5,11 +5,13 @@ services:
     build: .
     container_name: cloud9
     network_mode: bridge
-    hostname: 'shintech-server'
+    hostname: shintech-server
     ports: 
       - 8080:8080
     restart: always
     environment: 
-      - USERNAME='mprather'
-      - PASSWORD='test'
-      - EMAIL='test@gmail.com'
+      - USERNAME=mprather
+      - PASSWORD=test
+      - EMAIL=test@gmail.com
+    volumes:
+      - ./data/Development:/home/mike/Development
