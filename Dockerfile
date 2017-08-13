@@ -75,4 +75,4 @@ RUN \
   
   sudo rm -vfr $HOME/node-v6.10.2-linux-x64 $HOME/node-v6.10.2-linux-x64.tar.xz $HOME/bashrc.txt
 
-CMD dumb-init node $HOME/core/server.js -p 8081 -a ${USERNAME}:${PASSWORD} --listen 0.0.0.0 -w $HOME/Development
+CMD dumb-init node $HOME/core/server.js -p 8080 -a ${USERNAME}:${PASSWORD} --listen 0.0.0.0 -w $HOME/Development
