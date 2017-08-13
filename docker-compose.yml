@@ -7,11 +7,11 @@ services:
     network_mode: bridge
     hostname: shintech-server
     ports: 
-      - 8080:8080
+      - 8081:8081
     restart: always
-    environment: 
+    environment:
       - USERNAME=mprather
       - PASSWORD=test
       - EMAIL=test@gmail.com
-    volumes:
-      - ./data/Development:/home/mike/Development
+    # volumes:
+    #   - ./data/Development:/home/mike/Development
