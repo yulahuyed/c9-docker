@@ -14,7 +14,7 @@ RUN \
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   
-  apt-get update && apt-get install sudo python2.7 git wget xz-utils sl git autofs sshfs nano vim python-software-properties pv toilet rig unzip python-pip nmap whois make ftp ftpd netdiscover htop moreutils ruby2.3 ruby2.3-dev dstat slurm iftop iptraf calcurse vifm ranger cloc yarn httpie python3-pip tmux -y
+  apt-get update && apt-get install sudo python2.7 git wget xz-utils sl git autofs sshfs nano vim python-software-properties pv toilet rig unzip python-pip nmap whois make ftp ftpd netdiscover htop moreutils ruby2.3 ruby2.3-dev dstat slurm iftop iptraf calcurse vifm ranger cloc yarn httpie python3-pip -y
 
 RUN \
   wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-x64.tar.xz && \
