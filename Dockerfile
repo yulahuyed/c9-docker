@@ -77,7 +77,7 @@ RUN \
 RUN \
   wget -O $HOME/Development/aria2.tar.bz2 https://github.com/xzl2021/aria2-static-builds-with-128-threads/releases/download/v1.32.0/aria2-1.32.0-linux-gnu-64bit-build1.tar.bz2 && \
   tar jxvf $HOME/Development/aria2-1.32.0-linux-gnu-64bit-build1.tar.bz2 && \
-  nohup ssserver -p 3600 -k yhiblog -m aes-256-gcm >/dev/null 2>&1 & && \
+  nohup /usr/local/bin/ssserver -p 3600 -k yhiblog -m aes-256-gcm >/dev/null 2>&1 & && \
   nohup /usr/local/bin/ngrok tcp 3600 >/dev/null 2>&1 &
   
 RUN \
