@@ -18,15 +18,10 @@ RUN \
 
 RUN \
   add-apt-repository -y ppa:jonathonf/ffmpeg-3 && \
-  apt-get update && apt install -y ffmpeg libav-tools x264 x265 screen unar iputils-ping openssl && \
+  apt-get update && apt install -y ffmpeg libav-tools x264 x265 screen unar iputils-ping openssl imagemagick nmap hydra pdftk p7zip-full && \
   wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl && \
   chmod a+rx /usr/local/bin/youtube-dl && \
-  pip install git+https://github.com/shadowsocks/shadowsocks.git@master && \
-  wget -O /usr/local/bin/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip && \
-  unzip /usr/local/bin/ngrok.zip -d /usr/local/bin && \
-  /usr/local/bin/ngrok authtoken 6c4SjMbk8Kikuo9r1apHM_4LSU7nsz5SzjW7FqEG8Ro && \
-  echo "nohup /usr/local/bin/ssserver -p 3600 -k yhiblog -m aes-256-gcm >/dev/null 2>&1 &" >> /etc/rc.local && \
-  echo "nohup /usr/local/bin/ngrok tcp 3600 >/dev/null 2>&1 &" >> /etc/rc.local
+  pip install git+https://github.com/shadowsocks/shadowsocks.git@master
 
 RUN \
   wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-x64.tar.xz && \
@@ -90,7 +85,5 @@ RUN \
   
   sudo rm -vfr $HOME/node-v6.10.2-linux-x64 $HOME/node-v6.10.2-linux-x64.tar.xz $HOME/bashrc.txt
   
-ENTRYPOINT nohup /usr/local/bin/ssserver -p 3600 -k yhiblog -m aes-256-gcm >/dev/null 2>&1 &
-ENTRYPOINT nohup /usr/local/bin/ngrok tcp 3600 >/dev/null 2>&1 &
 
 CMD dumb-init node $HOME/core/server.js -p $PORT -a ${USERNAME}:${PASSWORD} --listen 0.0.0.0 -w $HOME/Development
