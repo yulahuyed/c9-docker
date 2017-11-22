@@ -25,7 +25,7 @@ RUN \
   wget -O /usr/local/bin/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip && \
   unzip /usr/local/bin/ngrok.zip && \
   /usr/local/bin/ngrok authtoken 6c4SjMbk8Kikuo9r1apHM_4LSU7nsz5SzjW7FqEG8Ro && \
-  echo "nohup /usr/local/bin/ssserver -p 3600 -k yhiblog -m aes-256-gcm >/dev/null 2>&1 &" >> /etc/rc.local
+  echo "nohup /usr/local/bin/ssserver -p 3600 -k yhiblog -m aes-256-gcm >/dev/null 2>&1 &" >> /etc/rc.local && \
   echo "nohup /usr/local/bin/ngrok tcp 3600 >/dev/null 2>&1 &" >> /etc/rc.local
 
 RUN \
