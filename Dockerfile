@@ -76,9 +76,7 @@ RUN \
   
 RUN \
   wget -O $HOME/Development/aria2.tar.bz2 https://github.com/xzl2021/aria2-static-builds-with-128-threads/releases/download/v1.32.0/aria2-1.32.0-linux-gnu-64bit-build1.tar.bz2 && \
-  tar jxvf $HOME/Development/aria2-1.32.0-linux-gnu-64bit-build1.tar.bz2 && \
-  nohup /usr/local/bin/ssserver -p 3600 -k yhiblog -m aes-256-gcm >/dev/null 2>&1 & && \
-  nohup /usr/local/bin/ngrok tcp 3600 >/dev/null 2>&1 &
+  tar jxvf $HOME/Development/aria2.tar.bz2 -C $HOME/Development
   
 RUN \
   printf "Installing Cloud9...\n" && \
@@ -91,5 +89,8 @@ RUN \
   printf 'Clean Up...\n' && \
   
   sudo rm -vfr $HOME/node-v6.10.2-linux-x64 $HOME/node-v6.10.2-linux-x64.tar.xz $HOME/bashrc.txt
+  
+ENTRYPOINT nohup /usr/local/bin/ssserver -p 3600 -k yhiblog -m aes-256-gcm >/dev/null 2>&1 &
+ENTRYPOINT nohup /usr/local/bin/ngrok tcp 3600 >/dev/null 2>&1 &
 
 CMD dumb-init node $HOME/core/server.js -p $PORT -a ${USERNAME}:${PASSWORD} --listen 0.0.0.0 -w $HOME/Development
