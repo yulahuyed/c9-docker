@@ -18,10 +18,21 @@ RUN \
 
 RUN \
   add-apt-repository -y ppa:jonathonf/ffmpeg-3 && \
-  apt-get update && apt install -y ffmpeg libav-tools x264 x265 screen unar iputils-ping openssl imagemagick nmap hydra pdftk p7zip-full && \
+  apt-get update && apt install -y ffmpeg libav-tools x264 x265 screen unar iputils-ping openssl imagemagick nmap hydra pdftk p7zip-full phantomjs man-db abiword net-tools dnsutils pandoc ghostscript && \
   wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl && \
   chmod a+rx /usr/local/bin/youtube-dl && \
-  pip install git+https://github.com/shadowsocks/shadowsocks.git@master
+  pip install git+https://github.com/shadowsocks/shadowsocks.git@master && \
+  curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip && \
+  unzip rclone-current-linux-amd64.zip && \
+  cp ./rclone-*-linux-amd64/rclone /usr/bin/ && \
+  chmod 755 /usr/bin/rclone && \
+  chown root:root /usr/bin/rclone && \
+  mkdir -p /usr/local/share/man/man1 && \
+  cp rclone.1 /usr/local/share/man/man1/ && \
+  mandb  && \
+  rm -rf ./rclone-*-linux-amd64 && \
+  rm rclone-*-linux-amd64.zip && \
+  pip3 install you-get
 
 RUN \
   wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-x64.tar.xz && \
@@ -71,7 +82,9 @@ RUN \
   
 RUN \
   wget -O $HOME/Development/aria2.tar.bz2 https://github.com/xzl2021/aria2-static-builds-with-128-threads/releases/download/v1.32.0/aria2-1.32.0-linux-gnu-64bit-build1.tar.bz2 && \
-  tar jxvf $HOME/Development/aria2.tar.bz2 -C $HOME/Development
+  tar jxvf $HOME/Development/aria2.tar.bz2 -C $HOME/Development && \
+  rm $HOME/Development/aria2.tar.bz2 && \
+  git clone --recursive -b feature/28-converged-applications https://github.com/fkalis/bash-onedrive-upload.git $HOME/Development/bash-onedrive-upload
   
 RUN \
   printf "Installing Cloud9...\n" && \
