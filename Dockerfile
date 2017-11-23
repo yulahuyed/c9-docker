@@ -28,7 +28,7 @@ RUN \
   chmod 755 /usr/bin/rclone && \
   chown root:root /usr/bin/rclone && \
   mkdir -p /usr/local/share/man/man1 && \
-  cp rclone.1 /usr/local/share/man/man1/ && \
+  cp ./rclone-*-linux-amd64/rclone.1 /usr/local/share/man/man1/ && \
   mandb  && \
   rm -rf ./rclone-*-linux-amd64 && \
   rm rclone-*-linux-amd64.zip && \
