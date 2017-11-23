@@ -32,7 +32,8 @@ RUN \
   mandb  && \
   rm -rf ./rclone-*-linux-amd64 && \
   rm rclone-*-linux-amd64.zip && \
-  pip3 install you-get
+  pip3 install you-get && \
+  chmod 777 /var/run/screen
 
 RUN \
   wget https://nodejs.org/dist/v6.10.2/node-v6.10.2-linux-x64.tar.xz && \
